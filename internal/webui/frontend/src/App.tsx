@@ -178,6 +178,12 @@ export function App() {
 
                 <div className="meters">
                     <Meter label="mapped" value={formatBytes(total)} />
+                    {status?.diskTotal ? (
+                        <Meter
+                            label={`free of ${formatBytes(status.diskTotal)}`}
+                            value={formatBytes(status.diskFree ?? 0)}
+                        />
+                    ) : null}
                     <Meter
                         label="files"
                         value={status ? formatNumber(status.files) : "—"}
