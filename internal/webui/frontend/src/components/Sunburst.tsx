@@ -5,6 +5,9 @@ import {
     useRef,
 } from "react";
 import * as d3 from "d3";
+// Side-effect import: d3 is marked sideEffects:false, so the bundler drops
+// d3-transition's patch of selection.transition/interrupt without this.
+import "d3-transition";
 import type { TreeNode } from "../types";
 
 // Arc coordinates we animate between (a mutable copy of the partition layout).
